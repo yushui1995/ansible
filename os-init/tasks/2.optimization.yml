@@ -1,6 +1,7 @@
 ---
-# author: lework
+# author: yushui
 
+#系统调优
 - name: optimization | sysctl.
   blockinfile:
     path: /etc/sysctl.d/99-sysctl.conf
@@ -46,6 +47,7 @@
   tags:
    - sysctl
       
+#内核参数修改      
 - name: optimization | limits.
   blockinfile:
     path: /etc/security/limits.d/99-limits.conf
@@ -82,6 +84,7 @@
   tags:
    - systemd-limits
 
+#更换repo镜像
 - name: optimization | package repository.
   copy: "src={{ item.src }} dest={{ item.dest }}"
   with_items: "{{ __package_repo }}"

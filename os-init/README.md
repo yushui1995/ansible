@@ -52,7 +52,7 @@ ansible管理主机
 
 ## github地址
 
-https://github.com/lework/Ansible-roles/tree/master/os-init
+https://github.com/yushui1995/Ansible-roles/tree/master/os-init
 
 ## Example Playbook
 ```yaml

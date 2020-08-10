@@ -1,6 +1,7 @@
 ---
-# author: lework
+# author: yushui
 
+#yum下载软件
 - name: enable | install software.
   package:
     name: "{{ item }}"
@@ -9,6 +10,7 @@
   tags:
    - install
   
+#日志配置
 - block:
   - name: enable | journald Directory.
     file: path={{ item }} state=directory

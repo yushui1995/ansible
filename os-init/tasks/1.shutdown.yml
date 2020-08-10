@@ -1,15 +1,18 @@
 ---
-# author: lework
+# author: yushui
 
+#关闭linux
 - name: shutdwon | selinux.
   replace: dest=/etc/selinux/config regexp=^SELINUX=enforcing replace=SELINUX=disabled
   ignore_errors: yes
   tags: selinux
 
+#关闭swap
 - name: shutdown | swap.
   replace: dest=/etc/fstab regexp='(.*)swap(\s+)swap' replace='# \1swap\2swap'
   tags: swap
 
+#关闭防火墙等
 - name: shutdwon | services.
   service: name={{ item }} state=stopped enabled=false
   with_items:

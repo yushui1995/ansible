@@ -1,21 +1,23 @@
 ---
-# author: lework
+# author: yushui
 
-- name: setting | sshd.
-  lineinfile:
-    dest: /etc/ssh/sshd_config
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    state: present
-  with_items:
-    - { regexp: "^#?UseDNS", line: "UseDNS no" }
-    - { regexp: "^#?UsePAM", line: "UsePAM yes" }
-    - { regexp: "^PasswordAuthentication", line: "PasswordAuthentication yes" }
-    - { regexp: "^GSSAPIAuthentication", line: "#GSSAPIAuthentication no" }
-    - { regexp: "^GSSAPICleanupCredentials", line: "#GSSAPICleanupCredentials no" }
-  tags:
-   - sshd
+#ssh配置
+#- name: setting | sshd.
+#  lineinfile:
+#    dest: /etc/ssh/sshd_config
+#    regexp: "{{ item.regexp }}"
+#    line: "{{ item.line }}"
+#    state: present
+#  with_items:
+#    - { regexp: "^#?UseDNS", line: "UseDNS no" }
+#    - { regexp: "^#?UsePAM", line: "UsePAM yes" }
+#    - { regexp: "^PasswordAuthentication", line: "PasswordAuthentication yes" }
+#   - { regexp: "^GSSAPIAuthentication", line: "#GSSAPIAuthentication no" }
+#   - { regexp: "^GSSAPICleanupCredentials", line: "#GSSAPICleanupCredentials no" }
+#  tags:
+#   - sshd
 
+#ssh登录信息
 - name: env | ssh login banner.
   copy:
     src: zz-ssh-login-banner.sh
@@ -23,6 +25,7 @@
   tags:
    - ssh-login-banner
       
+#vim配置信息
 - name: setting | vim.
   blockinfile:
     path: "{{ __vimrc_file }}"
@@ -50,9 +53,10 @@
       set noswapfile    
   tags:
    - vim
-      
-- name: setting | cpu
-  shell: cpupower frequency-set -g performance
-  ignore_errors: yes
-  tags:
-   - cpu
+
+#cpu调优
+#- name: setting | cpu
+#  shell: cpupower frequency-set -g performance
+#  ignore_errors: yes
+#  tags:
+#   - cpu

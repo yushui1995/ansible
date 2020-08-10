@@ -1,6 +1,7 @@
 ---
-# author: lework
+# author: yushui
 
+#更新yum
 - block:
   - name: upgrade | Update all fractures to the latest version with yum.
     yum:

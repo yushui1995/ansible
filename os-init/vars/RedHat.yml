@@ -16,6 +16,8 @@ __package:
   - vim
   - tree
   - bash-completion
+  - lvm2
+  - git
   
 __package_repo: 
   - { src: "{{ ansible_distribution }}_{{ansible_distribution_major_version}}_CentOS-Base.repo", dest: "/etc/yum.repos.d/CentOS-Base.repo" }
