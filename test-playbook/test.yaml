@@ -1,0 +1,7 @@
+---
+- name: installation mysql
+  hosts: test3
+  gather_facts: no
+  tasks:
+  - debug:
+      msg: "abc"
